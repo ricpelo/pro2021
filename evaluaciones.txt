@@ -1,0 +1,76 @@
+suma(4, 3)                    # evalúa suma y devuelve la expresión lambda
+= (lambda x, y: x + y)(4, 3)  # evalúa la expresión lambda y devuelve una función
+= (lambda x, y: x + y)(4, 3)  # evalúa 4 y devuelve 4
+= (lambda x, y: x + y)(4, 3)  # evalúa 3 y devuelve 3
+= (lambda x, y: x + y)(4, 3)  # beta-reducción
+= (4 + 3)                     # aritmética
+= 7
+
+f = lambda x, y: x + y + z
+z = 9
+f(2, 3)                           # evalúa f y devuelve la lambda
+= (lambda x, y: x + y + z)(2, 3)  # evalúa 2 y devuelve 2
+= (lambda x, y: x + y + z)(2, 3)  # evalúa 3 y devuelve 3
+= (lambda x, y: x + y + z)(2, 3)  # beta-reducción
+= (2 + 3 + z)                     # evalúa 2 + 3 y devuelve 5
+= (5 + z)                         # evalúa z y devuelve 9
+= (5 + 9)                         # evalúa 5 + 9 y devuelve 14
+= 14
+
+f = lambda x, y: (lambda z: y + z)(x)
+f(2, 3)                           # evalúa f y devuelve la lambda
+= (lambda x, y: (lambda z: y + z)(x))(2, 3)  # evalúa 2 y devuelve 2
+= (lambda x, y: (lambda z: y + z)(x))(2, 3)  # evalúa 3 y devuelve 3
+= (lambda x, y: (lambda z: y + z)(x))(2, 3)  # beta-reducción
+= (lambda z: 3 + z)(2)                       # beta-reducción
+= (3 + 2)                                    # aritmética
+= 5
+
+
+x = 4
+z = 1
+suma = (lambda x, y: x + y + z)(8, 12) + x
+suma = 21
+
+
+w = 2
+f = lambda x, y: 5 + (lambda z: z + 3)(x + y)
+r = f(2, 4)
+
+f(2, 4)                   # evalúa f y devuelve la lambda
+= (lambda x, y: 5 + (lambda z: z + 3)(x + y))(2, 4) # evalúa 2 y devuelve 2
+= (lambda x, y: 5 + (lambda z: z + 3)(x + y))(2, 4) # evalúa 4 y devuelve 4
+= (lambda x, y: 5 + (lambda z: z + 3)(x + y))(2, 4) # beta-reducción
+= (5 + (lambda z: z + 3)(2 + 4))                    # evalúa 5 y devuelve 5
+= (5 + (lambda z: z + 3)(2 + 4))                    # evalúa 2 + 4 y devuelve 6
+= (5 + (lambda z: z + 3)(6))                        # beta-reducción
+= (5 + (6 + 3))                                     # aritmética
+= 14
+
+
+cuadrado = lambda x: x * x
+cuadrado(3 + 4)                # evalúa cuadrado y devuelve el lambda
+= (lambda x: x * x)(3 + 4)     # beta-reducción
+= ((3 + 4) * (3 + 4))          # aritmética
+= 49
+
+primero = lambda x, y: x
+
+primero(4, 1 / 0)              # evalúa primero y devuelve el lambda
+= (lambda x, y: x)(4, 1 / 0)   # beta-reducción
+= (4)                          # es simplemente 4
+= 4
+
+divide(6, 0)                                   # evalúa divide y devuelve lambda
+= (lambda x, y: x / y if y != 0 else 0)(6, 0)  # evalúa 6 y devuelve 6
+= (lambda x, y: x / y if y != 0 else 0)(6, 0)  # evalúa 0 y devuelve 0
+= (lambda x, y: x / y if y != 0 else 0)(6, 0)  # beta-reducción
+= (6 / 0 if 0 != 0 else 0)                     # evalúa 0 != 0 y devuelve False
+= (6 / 0 if False else 0)                      #
+
+
+suma
+suma3
+prueba
+
+<expresión> ::= ( <expresión> <opbin> <expresión> )
