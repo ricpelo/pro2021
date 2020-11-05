@@ -137,6 +137,7 @@ Post: producto_rango(a, b) = el producto de los números
       producto_rango(a, b) = 1 cuando a > b
 """
 
+"""
 producto_rango(4, 7) = 4 * 5 * 6 * 7
 producto_rango(7, 7) = 7
 producto_rango(8, 7) = 1
@@ -147,8 +148,6 @@ producto_rango = lambda a, b: 1 if a > b else a * producto_rango(a + 1, b)
 producto_hasta(n) = 1 * 2 * 3 * 4 * 5 * ... * n
 producto_hasta1 = lambda n: factorial(n)
 producto_hasta2 = lambda n: producto_rango(1, n)
-
-"""
 |    X      |
 |    XX     |
 |    XXX    |
@@ -168,3 +167,88 @@ hanoi = lambda n, a, b, c: '' if n == 0 else \
                            hanoi(n - 1, a, c, b) + \
                            'mueve un disco del ' + a + ' al ' + b + '\n' + \
                            hanoi(n - 1, c, b, a)
+
+suma_rango = lambda a, b: 0 if a > b else a + suma_rango(a + 1, b)
+
+suma_rango_iter = lambda a, b, acc: acc if a > b else \
+                                    suma_rango_iter(a + 1, b, acc + a)
+suma_rang = lambda a, b: suma_rango_iter(a, b, 0)
+
+fib_iter = lambda cont, a, b: a if cont == 0 else \
+                              fib_iter(cont - 1, b, a + b)
+fib = lambda n: fib_iter(n, 0, 1)
+
+fact_iter = lambda cont, acc: acc if cont == 0 else \
+                              fact_iter(cont - 1, cont * acc)
+factorial = lambda n: fact_iter(n, 1)
+
+"""
+Escribir una función que calcule la longitud de una cadena.
+
+Especificación:
+
+Pre:  True
+      longitud(s: str) -> int
+Post: longitud(s) = len(s)
+"""
+
+s == ''                ==> longitud(s) == 0
+s == s[0] + s[1:]      ==> longitud(s) = 1 + longitud(s[1:])
+
+longitud = lambda s: 0 if s == '' else 1 + longitud(s[1:])
+
+longitud('hola')
+= 1 + longitud('ola')
+= 1 + 1 + longitud('la')
+= 1 + 1 + 1 + longitud('a')
+= 1 + 1 + 1 + 1 + longitud('')
+= 1 + 1 + 1 + 1 + 0
+= 1 + 1 + 1 + 1
+= 1 + 1 + 2
+= 1 + 3
+= 4
+
+long_iter = lambda s, acc: acc if s == '' else \
+                           long_iter(s[1:], acc + 1)
+longitud = lambda s: long_iter(s, 0)
+
+s_nuevo = s_viejo[1:]
+acc_nuevo = acc_viejo + 1
+
+  s        acc
+-------- -------
+ 'hola'     0
+ 'ola'      1
+ 'la'       2
+ 'a'        3
+ ''         4
+
+longitud('hola')
+= long_iter('hola', 0)
+= long_iter('ola', 1)
+= long_iter('la', 2)
+= long_iter('a', 3)
+= long_iter('', 4)
+= 4
+
+"""
+Escribir una función que cuente cuántas vocales hay en una cadena.
+
+Especificación:
+
+Pre:  True
+      vocales(s: str) -> int
+Post: vocales(s) = el número de vocales de s
+
+Indicación: crearse una función que compruebe si un carácter es vocal o no.
+
+Especificación:
+
+Pre:  len(s) == 1
+      vocal(s: str) -> bool
+Post: vocal(s) == True si s es una vocal, False en caso contrario.
+                  No se deben distinguir mayúsculas de minúsculas,
+                  y las vocales acentuadas también son vocales.
+"""
+
+vocal = lambda s: s == 'a' or s == 'e' or s == 'i' or s == 'o' or s == 'u'

@@ -74,3 +74,85 @@ suma3
 prueba
 
 <expresión> ::= ( <expresión> <opbin> <expresión> )
+
+factorial = lambda n: 1 if n == 0 else n * factorial(n - 1)
+
+factorial(3)
+= 3 * factorial(2)
+= 3 * 2 * factorial(1)
+= 3 * 2 * 1 * factorial(0)
+= 3 * 2 * 1 * 1
+= 6
+
+suma_rango = lambda a, b: 0 if a > b else \
+                          a + suma_rango(a + 1, b)
+
+suma_rango(2, 5)
+= 2 + suma_rango(3, 5)
+= 2 + (3 + suma_rango(4, 5))
+= 2 + (3 + (4 + suma_rango(5, 5)))
+= 2 + (3 + (4 + (5 + suma_rango(6, 5))))
+= 2 + (3 + (4 + (5 + 0)))
+= 2 + (3 + (4 + 5))
+= 2 + (3 + 9)
+= 2 + 12
+= 14
+
+
+fact_iter = lambda cont, acc: acc if cont == 0 else \
+                              fact_iter(cont - 1, cont * acc)
+factorial = lambda n: fact_iter(n, 1)
+
+factorial(3)
+= fact_iter(3, 1)
+= fact_iter(2, 3)
+= fact_iter(1, 6)
+= fact_iter(0, 6)
+= 6
+
+TCO: Tail-Call Optimization
+
+
+suma_rango(a, b) = a + ... + b
+
+suma_rango(2, 4) = 2 + 3 + 4 = 9
+
+a_nuevo = a_viejo + 1
+b_nuevo = b_viejo
+acc_nuevo = acc_viejo + a_viejo
+
+   a         b           acc
+-------- ---------    ---------
+   2         4            0
+   3         4            2 + 0 = 2
+   4         4            2 + 3 = 5
+   5    >    4            5 + 4 = 9
+
+suma_rango_iter = lambda a, b, acc: acc if a > b else \
+                                    suma_rango_iter(a + 1, b, acc + a)
+suma_rang = lambda a, b: suma_rango_iter(a, b, 0)
+
+0 1 2 3 4 5 6
+0 1 1 2 3 5 8 13 21 34 55
+
+fib(6) = 8
+
+cont_nuevo = cont_viejo - 1
+a_nuevo = b_viejo
+b_nuevo = a_viejo + b_viejo
+
+ cont     a      b
+------  ----- -------
+   6      0      1
+   5      1      0 + 1 = 1
+   4      1      1 + 1 = 2
+   3      2      1 + 2 = 3
+   2      3      2 + 3 = 5
+   1      5      3 + 5 = 8
+   0      8      5 + 8 = 13
+
+fib_iter = lambda cont, a, b: a if cont == 0 else \
+                              fib_iter(cont - 1, b, a + b)
+fib = lambda n: fib_iter(n, 0, 1)
+
+LIFO = Last In First Out
