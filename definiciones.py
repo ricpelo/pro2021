@@ -192,11 +192,14 @@ Pre:  True
 Post: longitud(s) = len(s)
 """
 
+"""
 s == ''                ==> longitud(s) == 0
 s == s[0] + s[1:]      ==> longitud(s) = 1 + longitud(s[1:])
+"""
 
 longitud = lambda s: 0 if s == '' else 1 + longitud(s[1:])
 
+"""
 longitud('hola')
 = 1 + longitud('ola')
 = 1 + 1 + longitud('la')
@@ -207,14 +210,18 @@ longitud('hola')
 = 1 + 1 + 2
 = 1 + 3
 = 4
+"""
 
 long_iter = lambda s, acc: acc if s == '' else \
                            long_iter(s[1:], acc + 1)
 longitud = lambda s: long_iter(s, 0)
 
+"""
 s_nuevo = s_viejo[1:]
 acc_nuevo = acc_viejo + 1
+"""
 
+"""
   s        acc
 -------- -------
  'hola'     0
@@ -222,7 +229,9 @@ acc_nuevo = acc_viejo + 1
  'la'       2
  'a'        3
  ''         4
+"""
 
+"""
 longitud('hola')
 = long_iter('hola', 0)
 = long_iter('ola', 1)
@@ -230,6 +239,7 @@ longitud('hola')
 = long_iter('a', 3)
 = long_iter('', 4)
 = 4
+"""
 
 """
 Escribir una función que cuente cuántas vocales hay en una cadena.
@@ -271,3 +281,31 @@ prod_range = lambda r: 1 if r == range(0) else \
                        r[0] * prod_range(r[1:])
 
 fact_range = lambda n: prod_range(range(1, n + 1))
+
+cubo = lambda n: n * n * n
+
+"""
+Especificación:
+
+Pre:  los elementos de t deben ser números
+Sig:  tupla_cubos(t: tuple) -> tuple
+Post: tupla_cubos(t) = una tupla formada por los elementos de t
+                       elevados al cubo
+"""
+
+import math
+
+tupla_cubos = lambda t: () if t == () else \
+                        (t[0] ** 3,) + tupla_cubos(t[1:])
+
+tupla_cuadrados = lambda t: () if t == () else \
+                            (t[0] ** 2,) + tupla_cuadrados(t[1:])
+
+tupla_raiz = lambda t: () if t == () else \
+                       (math.sqrt(t[0]),) + tupla_raiz(t[1:])
+
+mi_map = lambda f, t: () if tuple(t) == () else \
+                      (f(t[0]),) + mi_map(f, t[1:])
+
+mi_filter = lambda f, t: () if t == () else \
+                         ((t[0],) if f(t[0]) else ()) + mi_filter(f, t[1:])

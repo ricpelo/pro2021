@@ -161,3 +161,17 @@ len( (1,2,3) + (4,5) )          # evalúa len y devuelve len
 = len( (1,2,3) + (4,5) )        # evalúa (1,2,3) + (4,5) y devuelve (1,2,3,4,5)
 = len( (1,2,3,4,5) )            # aplicación de len a (1,2,3,4,5)
 = 5
+
+suma_o_resta = lambda s: (lambda x, y: x + y) if s == 'suma' else \
+                         (lambda x, y: x - y)
+
+suma_o_resta('suma')(4, 3)  # evalúa suma_o_resta y devuelve el lambda
+= (lambda s: (lambda x, y: x + y) if s == 'suma' else \
+             (lambda x, y: x - y))('suma')(4, 3) # evalúa 'suma' y devuelve 'suma'
+= (lambda s: (lambda x, y: x + y) if s == 'suma' else \
+             (lambda x, y: x - y))('suma')(4, 3) # beta-reducción
+= (lambda x, y: x + y)(4, 3) # evalúa 4 y devuelve 4
+= (lambda x, y: x + y)(4, 3) # evalúa 3 y devuelve 3
+= (lambda x, y: x + y)(4, 3) # beta-reducción
+= (4 + 3)
+= 7
