@@ -251,4 +251,23 @@ Post: vocal(s) == True si s es una vocal, False en caso contrario.
                   y las vocales acentuadas también son vocales.
 """
 
-vocal = lambda s: s == 'a' or s == 'e' or s == 'i' or s == 'o' or s == 'u'
+vocal = lambda s: s.lower() == 'a' or s.lower() == 'e' or \
+                  s.lower() == 'i' or s.lower() == 'o' or \
+                  s.lower() == 'u'
+
+vocales = lambda s: 0 if s == '' else \
+                    vocales(s[1:]) + (1 if vocal(s[0]) else 0)
+
+vocales_iter = lambda s, acc: acc if s == '' else \
+                              vocales_iter(s[1:], acc + (1 if vocales(s[0]) else 0))
+vocales_iterativo = lambda s: vocales_iter(s, 0)
+
+long_tupla = lambda t: 0 if t == () else 1 + long_tupla(t[1:])
+
+suma_range = lambda r: 0 if r == range(0) else \
+                       r[0] + suma_range(r[1:])
+
+prod_range = lambda r: 1 if r == range(0) else \
+                       r[0] * prod_range(r[1:])
+
+fact_range = lambda n: prod_range(range(1, n + 1))

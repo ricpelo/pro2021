@@ -156,3 +156,8 @@ fib_iter = lambda cont, a, b: a if cont == 0 else \
 fib = lambda n: fib_iter(n, 0, 1)
 
 LIFO = Last In First Out
+
+len( (1,2,3) + (4,5) )          # evalúa len y devuelve len
+= len( (1,2,3) + (4,5) )        # evalúa (1,2,3) + (4,5) y devuelve (1,2,3,4,5)
+= len( (1,2,3,4,5) )            # aplicación de len a (1,2,3,4,5)
+= 5
