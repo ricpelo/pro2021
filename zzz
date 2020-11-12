@@ -1,0 +1,87 @@
+(((4 / 2) * 3) / 6) + ((6 / 2) / 1) / (5 ** 2) / 4 * 2
+
+¿Qué regla se puede aplicar aquí para eliminar paréntesis?
+
+4 / (3 / 2)
+
+(4 / 3) / 2
+
+a. No es posible aplicar ninguna regla.
+
+
+b. Ninguna de las anteriores.
+
+
+c. Asociatividad.
+
+
+d. Prioridad.
+
+¿A qué expresión equivale la siguiente?
+
+x // y // z
+
+a. (x // y) // z.
+
+
+b. (x // y // z).
+
+
+c. Ambas son correctas.
+
+
+d. Ninguna es correcta.
+
+
+
+
+
+
+
+
+
+
+
+
+¿Cuánto vale la siguiente expresión?
+
+x + y
+
+a. Depende de lo que valgan x e y.
+
+
+b. La concatenación de x e y.
+
+
+c. La suma de x e y.
+
+
+d. Ninguna de las otras.
+
+
+
+
+
+
+
+
+¿Es correcta la siguiente expresión si queremos obtener el segundo carácter del apellido?
+
+(apellido + nombre[1:])[0]
+
+
+a. No, porque devuelve el primer carácter del apellido
+
+
+b. No, porque devuelve el apellido y después el nombre, sin el primer carácter
+
+
+c. Ninguna de las anteriores.
+
+
+d. No, porque devuelve el primer carácter del nombre
+
+
+
+
+

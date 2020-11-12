@@ -1,0 +1,11 @@
+str(int('2') + float('3.5'))    # evalúa str y devuelve la función str
+= str(int('2') + float('3.5'))  # evalúa int y devuelve la función int
+= str(int('2') + float('3.5'))  # evalúa '2' y devuelve '2'
+= str(int('2') + float('3.5'))  # evalúa int('2') y devuelve 2
+= str(2 + float('3.5'))         # evalúa float y devuelve la función float
+= str(2 + float('3.5'))         # evalúa '3.5' y devuelve '3.5'
+= str(2 + float('3.5'))         # evalúa float('3.5') y devuelve 3.5
+= str(2 + 3.5)                  # evalúa 2 + 3.5 y devuelve 5.5
+= str(5.5)                      # evalúa str(5.5) y devuelve '5.5'
+= '5.5'
+

@@ -309,3 +309,128 @@ mi_map = lambda f, t: () if tuple(t) == () else \
 
 mi_filter = lambda f, t: () if t == () else \
                          ((t[0],) if f(t[0]) else ()) + mi_filter(f, t[1:])
+
+from functools import reduce
+suma = lambda tupla: reduce(lambda x, y: x + y, tupla, 0)
+producto = lambda tupla: reduce(lambda x, y: x * y, tupla, 1)
+
+"""
+Escribir una función que devuelva el máximo de una tupla.
+
+Pre:  Todos los elementos de t son números enteros y t != ()
+      maximo(t: tuple) -> int
+Post: maximo(t) = el mayor elemento de t
+"""
+
+maximo = lambda t: t[0] if t[1:] == () else \
+                   max(t[0], maximo(t[1:]))
+
+max_iter = lambda t, acc: acc if t == () else \
+                          max_iter(t[1:], max(acc, t[0]))
+maxi = lambda t: max_iter(t, t[0])
+
+maximo = lambda t: reduce(max, t)
+minimo = lambda t: reduce(min, t)
+
+"""
+    t           acc
+  -----       -------
+ (4, 2, 5)       4
+   (2, 5)       max(4, 2) = 4
+   (5,)         max(4, 5) = 5
+   ()            5
+"""
+
+
+
+
+"""
+maximo((4, 2, 5))
+= max(4, maximo((2, 5)))
+= max(4, max(2, maximo((5,))))
+= max(4, max(2, 5))
+= max(4, 5)
+= 5
+"""
+
+
+"""
+Escribir una función que devuelva cuántos elementos hay en la tupla
+
+Pre:  True
+      cuantos(t: tuple) -> int
+Post: cuantos(t) = len(t)
+"""
+
+cuantos = lambda t: 0 if t == () else 1 + cuantos(t[1:])
+
+cuantos_iter = lambda t, acc: acc if t == () else \
+                              cuantos_iter(t[1:], acc + 1)
+cuant = lambda t: cuantos_iter(t, 0)
+
+cuantos = lambda t: reduce(lambda x, y: x + 1, t, 0)
+
+"""
+cuantos((4, 3, 2))
+= reduce(lambda x, y: x + 1, (4, 3, 2), 0)
+= ((0 + 1) + 1) + 1 = 3
+"""
+
+
+reduce = lambda f, t, i: i if t == () else \
+                         reduce(f, t[1:], f(i, t[0]))
+
+reduce(suma, (1, 2, 3), 0)
+= reduce_iter(suma, (1, 2, 3), 0)
+= reduce_iter(suma, (2, 3), suma(0, 1))
+= reduce_iter(suma, (2, 3), 1)
+= reduce_iter(suma, (3,), suma(1, 2))
+= reduce_iter(suma, (3,), 3)
+= reduce_iter(suma, (), suma(3, 3))
+= reduce_iter(suma, (), 6)
+= 6
+
+
+
+
+reduce(suma, (1, 2, 3), 0)
+= reduce_aux(suma, (0, 1, 2, 3))
+= suma(0, reduce_aux(suma, (1, 2, 3)))
+= suma(0, suma(1, reduce_aux(suma, (2, 3))))
+= suma(0, suma(1, suma(2, reduce_aux(suma, (3,)))))
+= suma(0, suma(1, suma(2, 3)))
+
+
+suma = lambda x, y: x + y
+reduce(suma, (1, 2, 3), 0))
+= reduce_aux(suma, (0, 1, 2, 3))
+= suma(reduce_aux(suma, (1, 2, 3), 0)
+= suma(suma(reduce_aux(suma, (2, 3)), 1), 0)
+= suma(suma(suma(reduce_aux(suma, (3,)), 2), 1), 0)
+= suma(suma(suma(3, 2), 1), 0)
+= suma(suma(5, 1), 0)
+= suma(6, 0)
+= 6
+
+
+
+
+
+
+= suma(reduce_aux(suma, reduce_aux(suma, (2, 3)), 1)), 0)
+= suma(reduce_aux(suma, reduce_aux(suma, reduce_aux(suma, (3,), 2), 1), 0))
+
+reduce(max, (1, 2, 3), 1)
+= max(reduce(max, (2, 3), 1), 1)
+= max(max(reduce(max, (3,), 1), 1)))
+= max(max(3, 1), 1)
+= max(3, 1)
+= 3
+
+
+reduce(max, (1, 2, 3), 1)
+= max(1, reduce(max, (2, 3), 1))
+= max(1, max(2, reduce(max, (3,), 1)))
+= max(1, max(2, 3))
+= max(1, 3)
+= 3

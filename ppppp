@@ -1,0 +1,71 @@
+((3 * (4 + 5)) - 10)          # evalúa el 3 (devuelve 3)
+= ((3 * (4 + 5)) - 10)        # evalúa el 4 (devuelve 4)
+= ((3 * (4 + 5)) - 10)        # evalúa el 5 (devuelve 5)
+= ((3 * (4 + 5)) - 10)        # evalúa el (4 + 5) (devuelve 9)
+= ((3 * 9) - 10)              # evalúa el (3 * 9) (devuelve 27)
+= (27 - 10)                   # evalúa el 10 (devuelve 10)
+= (27 - 10)                   # evalúa el (27 - 10) (devuelve 17)
+= 17
+
+4 * (3 + 5)                   # evalúa el 4 (devuelve 4)
+= 4 * (3 + 5)                 # evalúa el 3 (devuelve 3)
+= 4 * (3 + 5)                 # evalúa el 5 (devuelve 5)
+= 4 * (3 + 5)                 # evalúa el (3 + 5) (devuelve 8)
+= 4 * 8                       # evalúa el 4 * 8 (devuelve 32)
+= 32
+
+(4 * 3) + 5                   # evalúa el 4 (devuelve 4)
+= (4 * 3) + 5                 # evalúa el 3 (devuelve 3)
+= (4 * 3) + 5                 # evalúa el (4 * 3) (devuelve 12)
+= 12 + 5                      # evalúa el 5 (devuelve 5)
+= 12 + 5                      # evalúa 12 + 5 (devuelve 17)
+= 17
+
+sub(mul(3, add(4, 5)), 10)    # evalúa el sub (devuelve la función resta)
+= sub(mul(3, add(4, 5)), 10)  # evalúa el mul (devuelve la función multiplicación)
+= sub(mul(3, add(4, 5)), 10)  # evalúa el 3 (devuelve 3)
+= sub(mul(3, add(4, 5)), 10)  # evalúa el add (devuelve la función suma)
+= sub(mul(3, add(4, 5)), 10)  # evalúa el 4 (devuelve 4)
+= sub(mul(3, add(4, 5)), 10)  # evalúa el 5 (devuelve 5)
+= sub(mul(3, add(4, 5)), 10)  # evalúa el add(4, 5) (devuelve 9)
+= sub(mul(3, 9), 10)          # evalúa el mul(3, 9) (devuelve 27)
+= sub(27, 10)                 # evalúa el 10 (devuelve 10)
+= sub(27, 10)                 # evalúa el sub(27, 10) (devuelve 17)
+= 17
+
+
+
+add(add(8, mul(7, 3.0)), mul(4, 6))
+
+
+((8 + (7 * 3.0)) + (4 * 6))     # evalúa 8 y devuelve 8
+= ((8 + (7 * 3.0)) + (4 * 6))   # evalúa 7 y devuelve 7
+= ((8 + (7 * 3.0)) + (4 * 6))   # evalúa 3.0 y devuelve 3.0
+= ((8 + (7 * 3.0)) + (4 * 6))   # evalúa (7 * 3.0) y devuelve 21.0
+= ((8 + 21.0) + (4 * 6))        # evalúa (8 + 21.0) y devuelve 29.0
+= (29.0 + (4 * 6))              # evalúa 4 y devuelve 4
+= (29.0 + (4 * 6))              # evalúa 6 y devuelve 6
+= (29.0 + (4 * 6))              # evalúa (4 * 6) y devuelve 24
+= (29.0 + 24)                   # evalúa (29.0 + 24) y devuelve 53.0
+= 53.0                          # tipo float
+
+
+sub(add(mul(neg(4), 7), truediv(pow(2, 3), 4)), 5)
+
+
+((((–4) * 7) + ((2 ** 3) / 4)) – 5)   # evalúa 4 y devuelve 4
+= ((((–4) * 7) + ((2 ** 3) / 4)) – 5) # evalúa (-4) y devuelve -4
+= (((–4 * 7) + ((2 ** 3) / 4)) – 5)   # evalúa 7 y devuelve 7
+= (((–4 * 7) + ((2 ** 3) / 4)) – 5)   # evalúa -4 * 7 = -28
+= ((-28 + ((2 ** 3) / 4)) – 5)        # evalúa 2 y devuelve 2
+= ((-28 + ((2 ** 3) / 4)) – 5)        # evalúa 3 y devuelve 3
+= ((-28 + ((2 ** 3) / 4)) – 5)        # evalúa (2 ** 3) y devuelve 8
+= ((-28 + (8 / 4)) – 5)               # evalúa 4 y devuelve 4
+= ((-28 + (8 / 4)) – 5)               # evalúa (8 / 4) y devuelve 2.0
+= ((-28 + 2.0) - 5)                   # evalúa (-28 + 2.0) y devuelve -26.0
+= (-26.0 - 5)                         # evalúa 5 y devuelve 5
+= (-26.0 - 5)                         # evalúa (-26.0 - 5) y devuelve -31.0
+= -31.0
+
+5 * (x + y)
+
