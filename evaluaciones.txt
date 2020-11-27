@@ -175,3 +175,8 @@ suma_o_resta('suma')(4, 3)  # evalúa suma_o_resta y devuelve el lambda
 = (lambda x, y: x + y)(4, 3) # beta-reducción
 = (4 + 3)
 = 7
+
+def suma(x, y):
+   return x + y
+
+resultado = 7 + 3 = 10
