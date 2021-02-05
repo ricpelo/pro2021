@@ -1,28 +1,24 @@
-def deposito(saldo):
-    def saldo_actual():
-        return saldo
+class Deposito:
+    """
+    Invariante: saldo >= 0
+    """
 
-    def ingresar(cantidad):
-        nonlocal saldo
-        saldo += cantidad
+    __ERROR_NEGATIVO = 'El saldo no puede ser negativo'
 
-    def retirar(cantidad):
-        nonlocal saldo
-        if cantidad <= saldo:
-            saldo -= cantidad
-        else:
-            raise ValueError('Fondos insuficientes')
+    def __init__(self, saldo):
+        assert saldo >= 0, Deposito.__ERROR_NEGATIVO
+        self.__saldo = saldo
+        assert self.saldo_actual() == saldo
 
-    dispatch = {
-        'saldo_actual': saldo_actual,
-        'ingresar': ingresar,
-        'retirar': retirar
-    }
+    def saldo_actual(self):
+        return self.__saldo
 
-    def despacho(mensaje):
-        if mensaje in dispatch:
-            return dispatch[mensaje]
-        else:
-            raise ValueError('Operación incorrecta')
+    def ingresar(self, cantidad):
+        assert self.saldo_actual() >= -cantidad, Deposito.__ERROR_NEGATIVO
+        saldo_anterior = self.saldo_actual()
+        self.__saldo += cantidad
+        assert saldo_anterior + cantidad == self.saldo_actual()
 
-    return despacho
+    def retirar(self, cantidad):
+        assert self.saldo_actual() >= cantidad, 'Fondos insuficientes'
+        self.__saldo -= cantidad
