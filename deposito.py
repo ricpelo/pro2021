@@ -7,12 +7,30 @@ class Deposito:
 
     __ERROR_NEGATIVO = 'El saldo no puede ser negativo'
 
-    def __init__(self, saldo):
+    def __init__(self, saldo, historial=None):
         assert saldo >= 0, Deposito.__ERROR_NEGATIVO
         self.__saldo = saldo
-        self.__historial = Historial()
-        self.__historial.anyadir_historial('inicial', saldo)
+        if historial is None:
+            self.__historial = Historial()
+            self.__historial.anyadir_historial('inicial', saldo)
+        else:
+            self.__historial = historial
         assert self.saldo_actual() == saldo
+
+    def __repr__(self):
+        saldo = self.saldo_actual()
+        historial = repr(self.__historial)
+        return f'Deposito({saldo}, {historial})'
+
+    def __eq__(self, otro):
+        if type(self) != type(otro):
+            return NotImplemented
+        if self.longitud_historial() != otro.longitud_historial():
+            return False
+        for i in range(self.longitud_historial()):
+            if self.historial(i) != otro.historial(i):
+                return False
+        return self.saldo_actual() == otro.saldo_actual()
 
     def saldo_actual(self):
         return self.__saldo

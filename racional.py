@@ -12,6 +12,19 @@ class Racional:
         Racional.__simp = True
         self.__simplificar()
 
+    def __eq__(self, otro):
+        if type(self) != type(otro):
+            return NotImplemented
+        return self.numer() * otro.denom() == self.denom() * otro.numer()
+
+    def __str__(self):
+        return str(self.numer()) + ' / ' + str(self.denom())
+
+    def __repr__(self):
+        num = self.numer()
+        den = self.denom()
+        return f'Racional({num}, {den})'
+
     def numer(self):
         """Accesor (getter) que devuelve el numerador del racional."""
         return self.__num

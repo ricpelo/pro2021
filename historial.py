@@ -1,12 +1,24 @@
 class Historial:
-    def __init__(self):
-        self.__historial = []
+    def __init__(self, historial=None):
+        if historial is None:
+            self.__historial = []
+        else:
+            self.__historial = historial
+
+    def __repr__(self):
+        historial = repr(self.__historial)
+        return f'Historial({historial})'
 
     def anyadir_historial(self, op, cantidad):
         if self.__historial == []:
-            saldo = 0
+            saldo = cantidad
         else:
             saldo = self.__historial[-1]['saldo']
+            if op == 'retirar':
+                saldo -= cantidad
+            else:
+                saldo += cantidad
+
         self.__historial.append({'op': op,
                                  'cantidad': cantidad,
                                  'saldo': saldo})
