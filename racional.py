@@ -7,8 +7,8 @@ class Racional:
         un denominador.
         """
         Racional.__simp = False
-        self.set_numer(num)
-        self.set_denom(den)
+        self.__set_numer(num)
+        self.__set_denom(den)
         Racional.__simp = True
         self.__simplificar()
 
@@ -16,6 +16,14 @@ class Racional:
         if type(self) != type(otro):
             return NotImplemented
         return self.numer() * otro.denom() == self.denom() * otro.numer()
+
+    def __hash__(self):
+        """
+        hash(a) nunca cambia
+        a == b ==> hash(a) == hash(b)
+        a != b ==> hash(a) == hash(b)
+        """
+        return hash((self.numer(), self.denom()))
 
     def __str__(self):
         return str(self.numer()) + ' / ' + str(self.denom())
@@ -33,13 +41,13 @@ class Racional:
         """Accesor que devuelve el denominador del racional."""
         return self.__den
 
-    def set_numer(self, num):
+    def __set_numer(self, num):
         """Mutador (setter) que asigna el numerador del racional."""
         self.__num = num
         if Racional.__simp:
             self.__simplificar()
 
-    def set_denom(self, den):
+    def __set_denom(self, den):
         """Mutador que asigna el denominador del racional."""
         self.__den = den
         if Racional.__simp:
