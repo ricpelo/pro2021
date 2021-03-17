@@ -49,3 +49,53 @@ class Circulo(Figura):
 
 t = Triangulo(320, 200, 400, 20)
 c = Circulo(800, 600, 80)
+
+
+
+
+
+
+
+
+
+
+
+class Terrestre(ABC):
+    def __init__(self, numero_ruedas):
+        self.__numero_ruedas = numero_ruedas
+
+    def numero_ruedas(self):
+        return self.__numero_ruedas
+
+    def set_numero_ruedas(self, numero_ruedas):
+        self.__numero_ruedas = numero_ruedas
+
+    @abstractmethod
+    def mover(self):
+        ...
+
+class Coche(Terrestre):
+    def __init__(self, numero_puertas):
+        super().__init__(4)
+        self.__numero_puertas = numero_puertas
+
+    def numero_puertas(self):
+        return self.__numero_puertas
+
+    def set_numero_puertas(self, numero_puertas):
+        self.__numero_puertas = numero_puertas
+
+    def mover(self):
+        print("Brrrrrrrrrrrrmmmmm")
+
+class Moto(Terrestre):
+    def __init__(self):
+        super().__init__(2)
+
+    def mover(self):
+        print('Ñiaaaaaaooooooooooo')
+
+def mover_3_km(t):
+    t.mover()
+    t.mover()
+    t.mover()
