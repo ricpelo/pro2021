@@ -1,0 +1,23 @@
+
+subtipo directo:         subtipo:               subtipo propio:
+-------------------------------------------------------------------
+float <1 double      ==> float <: double    ==> float < double
+long <1 float        ==> long <: float      ==> long < float
+                         float <: float
+
+int <1 long
+
+char <_1<
+1
+​
+  int
+
+short <_1<
+1
+​
+  int
+
+byte <_1<
+1
+​
+  short
