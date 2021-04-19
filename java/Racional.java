@@ -1,47 +1,49 @@
 public class Racional {
-    private double numer;
-    private double denom;
+    private int numer;
+    private int denom;
+    public static int cantidad;
 
-    public Racional(double numer, double denom) {
-        setNumer(numer);
-        setDenom(denom);
-    }
-
-    public Racional(double numer) {
-        setNumer(numer);
-        setDenom(1.0);
-    }
-
-    public Racional() {
-
-    }
-
-    public double getNumer() {
-        return numer;
-    }
-
-    public double getDenom() {
-        return denom;
-    }
-
-    public void setNumer(double numer) {
+    private void setNumer(int numer) {
         this.numer = numer;
     }
 
-    public void setDenom(double denom) {
+    private void setDenom(int denom) {
         this.denom = denom;
     }
 
+    private void simplificar() {
+        int mcd = Matematicas.mcd(getNumer(), getDenom());
+        setNumer(getNumer() / mcd);
+        setDenom(getDenom() / mcd);
+    }
+
+    public Racional(int numer, int denom) {
+        setNumer(numer);
+        setDenom(denom);
+        simplificar();
+        cantidad++;
+    }
+
+    public Racional(int numer) {
+        setNumer(numer);
+        setDenom(1);
+        cantidad++;
+    }
+
+    public int getNumer() {
+        return numer;
+    }
+
+    public int getDenom() {
+        return denom;
+    }
+
     public void imprimir() {
-        System.out.println(String.format("%.2f / %.2f", numer, denom));
+        System.out.println(String.format("%d / %d", numer, denom));
     }
 
     public void imprimir(String prefijo) {
         System.out.print(prefijo);
         imprimir();
-    }
-
-    public void imprimir(boolean logico) {
-        System.out.println(logico);
     }
 }
