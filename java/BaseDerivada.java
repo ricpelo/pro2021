@@ -46,7 +46,9 @@ class Perro extends Animal {
 
 public class BaseDerivada {
     public static void main(String[] args) {
+        Animal m = new Gato();
         Gato a = new Gato();
+        m.nombre();
         System.out.println(a.getNumeroPatas());
     }
 }
