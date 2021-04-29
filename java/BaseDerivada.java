@@ -1,27 +1,40 @@
+import java.util.Objects;
+
 class Animal {
-    int numeroPatas;
-
-    public int getNumeroPatas() {
-        System.out.println(nombre());
-        return numeroPatas;
-    }
-
-    public String nombre() {
-        return "Animal";
-    }
+    public String nombre = "Animal";
+    public String raza;
+    public int edad;
 
     protected void mover(String w) {
         System.out.println("Me estoy moviendo hacia el " + w);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null) {
+            return false;
+        }
+
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Animal animal = (Animal) obj;
+        return edad == animal.edad && Objects.equals(raza, animal.raza);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(raza, edad);
+    }
 }
 
 class Gato extends Animal {
-    String numeroPatas;
-
-    @Override
-    public String nombre() {
-        return "Gato";
-    }
+    public String nombre = "Gato";
 
     @Override
     protected void mover(String s) {
@@ -34,6 +47,8 @@ class Gato extends Animal {
 }
 
 class Perro extends Animal {
+    public String nombre = "Perro";
+
     public void ladrar() {
         System.out.println("Guauuuuuuu");
     }
@@ -46,9 +61,14 @@ class Perro extends Animal {
 
 public class BaseDerivada {
     public static void main(String[] args) {
-        Animal m = new Gato();
         Gato a = new Gato();
-        m.nombre();
-        System.out.println(a.getNumeroPatas());
+        Gato b = new Gato();
+        a.edad = 5;
+        a.raza = "Persa";
+        b.edad = 5;
+        b.raza = "Persa";
+        System.out.println(a.equals(b));
+        System.out.println(a.hashCode());
+        System.out.println(b.hashCode());
     }
 }
