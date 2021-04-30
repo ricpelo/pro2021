@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-class Animal {
+abstract class Animal {
     public String nombre = "Animal";
     public String raza;
     public int edad;
