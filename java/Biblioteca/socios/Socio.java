@@ -2,13 +2,17 @@ package socios;
 import fondos.Prestable;
 
 public class Socio {
+    private final int MAX_PRESTABLES = 100;
+
     private long numero;
     private String nombre;
-    public Prestable[] fondos;
+    private Prestable[] fondos;
+    private int numPrestables = 0;
 
-    Socio(long numero, String nombre) {
+    public Socio(long numero, String nombre) {
         setNumero(numero);
         setNombre(nombre);
+        fondos = new Prestable[MAX_PRESTABLES];
     }
 
     public long getNumero() {
@@ -25,5 +29,11 @@ public class Socio {
 
     public final void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public void anyadirPrestable(Prestable p) {
+        if (numPrestables < MAX_PRESTABLES) {
+            fondos[numPrestables++] = p;
+        }
     }
 }

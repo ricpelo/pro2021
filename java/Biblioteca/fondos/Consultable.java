@@ -1,5 +1,7 @@
 package fondos;
 
+import socios.Socio;
+
 public interface Consultable {
-    void consultar();
+    void consultar(Socio socio);
 }

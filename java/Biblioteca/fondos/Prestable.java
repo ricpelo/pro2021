@@ -3,6 +3,8 @@ package fondos;
 import socios.Socio;
 
 public interface Prestable {
-    void prestar(Socio socio);
+    default void prestar(Socio socio) {
+        socio.anyadirPrestable(this);
+    }
     int getPlazoPrestamo();
 }
