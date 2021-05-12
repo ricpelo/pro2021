@@ -1,18 +1,18 @@
 package socios;
+
+import java.util.ArrayList;
+import java.util.List;
 import fondos.Prestable;
 
 public class Socio {
-    private final int MAX_PRESTABLES = 100;
-
     private long numero;
     private String nombre;
-    private Prestable[] fondos;
-    private int numPrestables = 0;
+    private List<Prestable> fondos;
 
     public Socio(long numero, String nombre) {
         setNumero(numero);
         setNombre(nombre);
-        fondos = new Prestable[MAX_PRESTABLES];
+        fondos = new ArrayList<Prestable>();
     }
 
     public long getNumero() {
@@ -32,8 +32,6 @@ public class Socio {
     }
 
     public void anyadirPrestable(Prestable p) {
-        if (numPrestables < MAX_PRESTABLES) {
-            fondos[numPrestables++] = p;
-        }
+        fondos.add(p);
     }
 }
