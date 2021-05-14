@@ -1,5 +1,7 @@
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class PrincipalGenerica {
     public static void main(String[] args) {
@@ -10,17 +12,30 @@ public class PrincipalGenerica {
         // ci.setValor(25);
         // System.out.println(ci.getValor());
 
-        ArrayList<String> lista = new ArrayList<>();
-        lista.add("pepe");
-        System.out.println(longitud(lista));
-        ArrayList<Integer> lista2 = new ArrayList<>();
-        lista2.add(25);
-        System.out.println(longitud(lista2));
+        List<StringBuilder> lst = new ArrayList<StringBuilder>();
 
-        List<List<Integer>> lli = new ArrayList<>();
+        lst.add(new StringBuilder("a"));
+        lst.add(new StringBuilder("b"));
+        lst.add(new StringBuilder("c"));
+        lst.add(new StringBuilder("d"));
+        lst.add(new StringBuilder("e"));
 
-        lli.add(lista2);
-        System.out.println(longitud(lli));
+        lst.forEach(PrincipalGenerica::sumaUno);
+
+        Iterator<StringBuilder> it = lst.iterator();
+
+        for (;;) {
+            try {
+                StringBuilder e = it.next();
+                System.out.println(e);
+            } catch (NoSuchElementException ex) {
+                break;
+            }
+        }
+    }
+
+    public static void sumaUno(StringBuilder x) {
+        x.append('z');
     }
 
     public static <T> int longitud(List<T> a) {
