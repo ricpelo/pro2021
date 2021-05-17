@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -54,6 +56,11 @@ public class OtroEjercicioViernes {
                     String e = it.next();
                     System.out.println(e);
                 }
+
+                // for (int i = lst.size() - 1; i >= 0; i--) {
+                //     String e = lst.get(i);
+                //     System.out.println(e);
+                // }
 
                 break;
         }
